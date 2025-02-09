@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
@@ -9,13 +9,15 @@ import Contact from "./pages/Contact";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Footer from "./components/Footer";
+import SearchBar from "./components/searchBar";
 
 export default function App() {
   return (
     <div className="bg-[#ffffff] w-[100vw] h-[100vh]"> {/* className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]" */}
 
       <Navbar/>
+      <SearchBar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -25,8 +27,9 @@ export default function App() {
         <Route path="/place-order" element={<PlaceOrder/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/collection" element={<Collection/>}/>
-        <Route path="/produce/:productId" element={<Product/>}/>
+        <Route path="/product/:id" element={<Product/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }

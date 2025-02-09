@@ -1,4 +1,5 @@
 import React from 'react'
+import { images } from '../assets/assets'
 
 const Hero = () => {
      return (
@@ -18,7 +19,7 @@ const Hero = () => {
                          </div>
                     </div>
                     <div className="right w-full md:w-1/2">
-                         <img src="/src/assets/teddy.jpg" alt="Teddy Bear" className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-contain" />
+                         <img src={images.teddy} alt="Teddy Bear" className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-contain" />
                     </div>
                </div>
           </div>

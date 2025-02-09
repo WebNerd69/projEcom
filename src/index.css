@@ -5,3 +5,10 @@
 a.active hr{
      display: block;
 }
+
+@media (max-width:766px){
+     a.active{
+          background: #000;
+          color: white;
+     }
+}

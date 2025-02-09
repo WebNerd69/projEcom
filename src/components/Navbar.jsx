@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { ShopContext } from '../context/Shopcontext';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const {showSearch, setShowSearch} = useContext(ShopContext)
     return (
-        <div className='w-full h-[7vh] bg-[#ffffff63] backdrop-blur-sm px-4 md:px-9 py-2 flex items-center justify-between relative'>
-            <div className='min-h-[2.5vw] flex items-center'>
-                <span className='px-3 text-[1.2rem] md:text-[1.5rem] font-semibold'>FOREVER™</span>
-            </div>
+        <div className='w-full h-[7vh] bg-[#ffffff63] backdrop-blur-sm  md:px-9 py-2 flex items-center justify-between relative px-10 sm:px-20'>
+            <Link to={"/"} className='min-h-[2.5vw] flex items-center'>
+                <span className='px-3 text-[1.2rem] md:text-[1.5rem] font-semibold cursor-pointer'>FOREVER™</span>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className='hidden md:flex gap-8 min-h-[2.5vw] justify-between items-center text-zinc-900'>
@@ -31,7 +32,9 @@ const Navbar = () => {
             </div>
 
             <div className='flex gap-4 md:gap-14 min-h-[2.5vw] rounded-full items-center px-2' id='searchBar'>
-                <i className="ri-search-2-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i>
+                <Link to={'/collection'}><i className="ri-search-2-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer" onClick={()=>{
+                    setShowSearch(!showSearch);
+                }}></i></Link>
                 <div className="group relative">
                     <i className="ri-user-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i>
                     <div className="hidden group-hover:block dropdown-menu absolute right-0 bg-zinc-100 gap-2 w-36 h-36 rounded-lg z-50">
@@ -56,7 +59,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Navigation */}
-            <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden absolute top-full left-0 w-full bg-[#ffffff63] backdrop-blur-sm flex-col py-4 shadow-lg transition-all`}>
+            <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:hidden absolute top-full left-0 w-full bg-white/70 backdrop-blur-md shadow-lg border border-white/20 flex-col py-4 transition-all duration-300 ease-in-out`}>
                 <NavLink to="/" className="px-4 py-2 text-[1.1rem] font-medium hover:bg-gray-100" onClick={()=>setIsMenuOpen(false)}>
                     Home
                 </NavLink>

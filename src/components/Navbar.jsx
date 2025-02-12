@@ -4,7 +4,7 @@ import { ShopContext } from '../context/Shopcontext';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {showSearch, setShowSearch} = useContext(ShopContext)
+    const {showSearch, setShowSearch,getCartCount} = useContext(ShopContext)
     return (
         <div className='w-full h-[7vh] bg-[#ffffff63] backdrop-blur-sm  md:px-9 py-2 flex items-center justify-between relative px-10 sm:px-20'>
             <Link to={"/"} className='min-h-[2.5vw] flex items-center'>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 </div> 
                 <Link to="/cart" className="cart relative">
                     <i className="ri-shopping-cart-2-line text-zinc-900 text-[24px] md:text-[32px]"></i>
-                    <p className='right-[-5px] bottom-[-5px] text-center aspect-square bg-zinc-900 text-white rounded-full w-5 h-5 tracking-wide leading-5 text-[10px] absolute font-medium flex items-center justify-center'>15</p>
+                    <p className='right-[-5px] bottom-[-5px] text-center aspect-square bg-zinc-900 text-white rounded-full w-5 h-5 tracking-wide leading-5 text-[10px] absolute font-medium flex items-center justify-center'>{getCartCount()}</p>
                 </Link>
                 {/* Mobile Menu Button - Moved to the end */}
                 <button 

@@ -36,7 +36,7 @@ const Navbar = () => {
                     setShowSearch(!showSearch);
                 }}></i></Link>
                 <div className="group relative">
-                    <i className="ri-user-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i>
+                    <Link to={"/login"}><i className="ri-user-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i></Link>
                     <div className="hidden group-hover:block dropdown-menu absolute right-0 bg-zinc-100 gap-2 w-36 h-36 rounded-lg z-50">
                         <div className="flex flex-col text-gray-500 gap-4 py-4 px-6 justify-evenly">
                             <p className='hover:text-zinc-900 font-medium cursor-pointer'>My Profile</p>

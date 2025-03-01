@@ -8,7 +8,7 @@ const LatestCollection = () => {
      const [LatestCollection,setLatestCollection] = useState([])
      useEffect(() => {
        setLatestCollection(products.slice(0,10));
-     }, [])
+     }, [products])
      // console.log(LatestCollection)
      return (
           <div className='w-full p-20 flex flex-col justify-center items-center gap-3'>

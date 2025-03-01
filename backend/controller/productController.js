@@ -53,7 +53,7 @@ const removeProduct = async (req, res) => {
      try {
           const { id } = req.body; // Get the product ID from request parameters
           const deletedProduct = await productModel.findByIdAndDelete(id); // Use findByIdAndDelete
-
+          console.log(id)
           if (!deletedProduct) {
                return res.status(404).json({ success: false, message: "Product not found" });
           }

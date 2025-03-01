@@ -4,7 +4,7 @@ import { ShopContext } from '../context/Shopcontext';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {showSearch, setShowSearch,getCartCount} = useContext(ShopContext)
+    const {showSearch, setShowSearch,getCartCount,logoutHandler,navigate,token} = useContext(ShopContext)
     return (
         <div className='w-full h-[7vh] bg-[#ffffff63] backdrop-blur-sm  md:px-9 py-2 flex items-center justify-between relative px-10 sm:px-20'>
             <Link to={"/"} className='min-h-[2.5vw] flex items-center'>
@@ -36,12 +36,12 @@ const Navbar = () => {
                     setShowSearch(!showSearch);
                 }}></i></Link>
                 <div className="group relative">
-                    <Link to={"/login"}><i className="ri-user-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i></Link>
-                    <div className="hidden group-hover:block dropdown-menu absolute right-0 bg-zinc-100 gap-2 w-36 h-36 rounded-lg z-50">
+                    <Link to={token?null:"/login"}><i className="ri-user-line text-zinc-900 text-[24px] md:text-[32px] cursor-pointer"></i></Link>
+                    <div className={token?"hidden group-hover:block dropdown-menu absolute right-0 bg-zinc-100 gap-2 w-36 h-36 rounded-lg z-50":"hidden  dropdown-menu absolute right-0 bg-zinc-100 gap-2 w-36 h-36 rounded-lg z-50"}>
                         <div className="flex flex-col text-gray-500 gap-4 py-4 px-6 justify-evenly">
                             <p className='hover:text-zinc-900 font-medium cursor-pointer'>My Profile</p>
-                            <p className='hover:text-zinc-900 font-medium cursor-pointer'>Orders</p>
-                            <p className='hover:text-red-600  font-medium cursor-pointer'>Logout</p>
+                            <p className='hover:text-zinc-900 font-medium cursor-pointer' onClick={()=>navigate('/orders')}>Orders</p>
+                            <p className='hover:text-red-600  font-medium cursor-pointer' onClick={()=> logoutHandler()}>Logout</p>
                         </div>
                     </div>
                 </div> 

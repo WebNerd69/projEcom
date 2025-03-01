@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { backendURL } from '../App'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
 const Login = ({setToken}) => {
      const [email,setEmail] = useState('')
      const [password,setPassword] = useState('')
+     const navigate = useNavigate()
      const onSubmitHandler = async(e)=>{
           try {
                e.preventDefault();
                const response = await axios.post(backendURL + '/api/user/admin' , {email,password});
                if (response.data.success) {
                     setToken(response.data.token)
+                    navigate("/")
                } else {
                     toast.error(response.data.message)
                }

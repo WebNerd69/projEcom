@@ -6,9 +6,9 @@ const BestSellers = () => {
      const { products } = useContext(ShopContext)
      const [BestSeller, SetBestSeller] = useState([])
      useEffect(() => {
-          const bestItem = products.filter((e) => (e.bestSeller))
+          const bestItem = products.filter((e) => (e.bestseller))
           SetBestSeller(bestItem.slice(0,5))
-     }, [])
+     }, [products])
      // console.log(BestSeller)
      return (
           <div className='w-full p-20 flex flex-col justify-center items-center gap-3'>

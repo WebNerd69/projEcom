@@ -3,12 +3,23 @@ import { ShopContext } from '../context/Shopcontext'
 import Title from './Title'
 
 const CartTotal = () => {
-     const {currency, deliveryFee, getCartAmount,cartItems} = useContext(ShopContext)
-     const [cartAmt, setCartAmt] = useState(0)
+     const { currency, deliveryFee, getCartAmount, cartItems } = useContext(ShopContext);
+     const [cartAmt, setCartAmt] = useState(0);
+     const [totalAmt, setTotaltAmt] = useState(0);
+     
      useEffect(() => {
-       setCartAmt(getCartAmount())
-
-     }, [cartItems])
+         const cartAmount = parseFloat(getCartAmount().toFixed(2)); // Ensure 2 decimal places
+         setCartAmt(cartAmount);
+     
+         if (cartAmount > 0) {
+             const temp = (cartAmount + deliveryFee).toFixed(2); // Ensure 2 decimal places
+             setTotaltAmt(parseFloat(temp)); // Convert back to number
+         } else {
+             setTotaltAmt(0);
+         }
+     }, [cartItems]);
+     
+     
      
   return (
      
@@ -27,7 +38,7 @@ const CartTotal = () => {
                </div>
                <div className="flex justify-between">
                     <b>Total</b>
-                    <b>{currency}{cartAmt>0?cartAmt+deliveryFee:0}</b>
+                    <b>{currency}{totalAmt}</b>
                </div>
 
           </div>

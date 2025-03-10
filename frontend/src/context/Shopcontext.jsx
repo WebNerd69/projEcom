@@ -126,8 +126,8 @@ const ShopContextProvider = (props) => {
     }
   }
 
-  let totalPrice = 0;
   const getCartAmount = () => {
+    let totalPrice = 0;
     for (const items in cartItems) {
       let itemInfo = products.find((product) => product._id == items)
       for (const item in cartItems[items]) {
@@ -136,11 +136,11 @@ const ShopContextProvider = (props) => {
             totalPrice += itemInfo.price * cartItems[items][item]
           }
         } catch (error) {
-
+          console.log(error.message)
         }
       }
     }
-    return totalPrice.toFixed(2);
+    return totalPrice;
   }
   const getProductsdata = async () => {
     try {
@@ -182,7 +182,7 @@ const ShopContextProvider = (props) => {
     currency, deliveryFee,
     products,
     search, setSearch, showSearch, setShowSearch,
-    addToCart, cartItems, getCartCount, updateQuantity, getCartAmount, logoutHandler, getCartData,
+    addToCart, cartItems, setCartItems, getCartCount, updateQuantity, getCartAmount, logoutHandler, getCartData,
     navigate,
     backendURL,
     token, setToken

@@ -10,7 +10,7 @@ import Collection from "./pages/Collection";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SearchBar from "./components/searchBar";
+import SearchBar from "./components/SearchBar";
 import { ToastContainer, toast } from 'react-toastify';
 export default function App() {
   return (
